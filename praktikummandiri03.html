@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Profil Rizkia Auladina</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef1f5;
+      color: #e64379;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 35px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    }
+
+    /* ===== HEADER (FOTO, INFO, KATEGORI) ===== */
+    header {
+      display: flex;
+      gap: 25px;
+      border-bottom: 2px solid #e42c82;
+      padding-bottom: 25px;
+      margin-bottom: 20px;
+    }
+    .foto {
+      width: 160px;
+      height: 190px;
+      object-fit: cover;
+      border: 2px solid #e9449f;
+      border-radius: 8px;
+      background: #eee;
+      flex-shrink: 0;
+    }
+    
+    /* Bagian Info Tengah */
+    .info {
+      flex: 1;
+      min-width: 0; /* KUNCI: Biar teks panjang nggak dorong layout */
+    }
+    .info h1 {
+      font-size: 2em;
+      color: #f71c65;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Grid Biodata (KUNCI SEJAJAR) */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 110px 1fr; /* 110px buat label, sisa buat isi */
+      gap: 8px 10px;
+      margin-bottom: 20px;
+      font-size: 0.95em;
+    }
+    .info-grid .label {
+      font-weight: 600;
+      color: #413857;
+    }
+    .info-grid .value {
+      color: #413857;
+      word-wrap: break-word;
+    }
+
+    /* Kontak */
+    .contact-info {
+      border-top: 1px dashed #c0c8d0;
+      padding-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.9em;
+    }
+    .contact-info p {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #413857;
+    }
+    .contact-info a {
+      color: #0066cc;
+      text-decoration: none;
+      word-break: break-all; /* Biar email panjang turun rapi */
+    }
+    .contact-info a:hover { text-decoration: underline; }
+
+    /* Kategori Kanan */
+    aside.categories {
+      width: 170px;
+      flex-shrink: 0;
+      border-left: 1px solid #d0d7de;
+      padding-left: 20px;
+    }
+    aside.categories h3 {
+      font-size: 1em;
+      color: #e4526a;
+      text-decoration: underline;
+      margin-bottom: 10px;
+    }
+    aside.categories ul {
+      list-style: none;
+      font-size: 0.85em;
+      color: #f84a4a;
+      line-height: 2;
+    }
+
+    /*  NAV  */
+       
+    nav {
+      background: #dd0950; /* Warna Pink */
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin-bottom: 25px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #ffeb3b; } 
+    /* ===== MAIN ARTICLE ===== */
+    main article p {
+      text-align: justify;
+      color: #444;
+      margin-bottom: 15px;
+      font-size: 0.95em;
+    }
+
+    /* ===== MULTIMEDIA ===== */
+    .multimedia {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+      border-top: 2px solid #e21173;
+      padding-top: 20px;
+    }
+    .box {
+      border: 1px solid #d0d7de;
+      background: #fafbfc;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .box h4 {
+      font-size: 0.95em;
+      color: #f0138c;
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    video, audio { width: 100%; border-radius: 4px; }
+    audio { margin-top: 10px; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: 75px;
+      object-fit: cover;
+      border: 1px solid #e481b2;
+      border-radius: 4px;
+      background: #ddd;
+    }
+
+    .attachments { list-style: none; }
+    .attachments li { margin-bottom: 10px; font-size: 0.85em; }
+    .attachments a { color: #f839a2d8; text-decoration: none; }
+    .attachments a::before { content: "📎 "; }
+    .attachments a:hover { text-decoration: underline; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 20px 0 0;
+      margin-top: 30px;
+      border-top: 1px solid #d0d7de;
+      color: #ee147a;
+      font-size: 0.85em;
+    }
+
+    /* ===== RESPONSIVE (MOBILE) ===== */
+    @media (max-width: 800px) {
+      header { flex-direction: column; }
+      aside.categories {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #d0d7de;
+        padding: 15px 0 0;
+      }
+      .multimedia { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header>
+      <!-- FOTO (Pastikan ada folder images dan file foto-diri.jpg) -->
+      <img src="potokia1.jpeg" alt="Foto Rizkia Auladina" class="foto">
+
+      <div class="info">
+        <h1>Rizkia Auladina</h1>
+        
+        <!-- BIODATA (DIJAMIN SEJAJAR) -->
+        <div class="info-grid">
+          <div class="label">Program Studi</div>
+          <div class="value">: Teknik Informatika</div>
+          
+          <div class="label">Minat</div>
+          <div class="value">: AI Engineering</div>
+          
+          <div class="label">Organisasi</div>
+          <div class="value">: Staff SDM - Sub Bagian Pendidikan, Biman Foundation</div>
+        </div>
+
+        <!-- KONTAK -->
+        <div class="contact-info">
+          <p>📍 <span>Jl. H. M. Tohir, Kel. Pondok Cina, Kec. Beji, Depok, Jawa Barat, Indonesia 16424</span></p>
+          <p>✉️ <span><a href="mailto:auladinarizkia278@gmail.com">auladinarizkia278@gmail.com</a></span></p>
+          <p>📞 <span><a href="tel:+6289512234286">+62 895-1223-4286</a></span></p>
+        </div>
+      </div>
+
+      <!-- KATEGORI -->
+      <aside class="categories">
+        <h3>Categories</h3>
+        <ul>
+          <li>Human Resources (SDM)</li>
+          <li>Public Relations (Humas)</li>
+          <li>English Club</li>
+        </ul>
+      </aside>
+    </header>
+
+     <nav>
+      <ul>
+        <li><a href="javascript:void(0);" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Home</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#multimedia">Multimedia</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN (DESKRIPSI DIRI) -->
+    <main>
+      <article id="profil">
+        <p>
+          Saya Rizkia Auladina, mahasiswa semester satu Program Studi Teknik Informatika yang memiliki minat pada bidang <strong>Web Development</strong> dan <strong>AI Engineering</strong>. Saya memiliki pengalaman organisasi sebagai staf Humas dan IT selama dua periode serta sekretaris English Club semasa SMA. Pengalaman tersebut membantu saya mengembangkan kemampuan komunikasi, administrasi, dan kerja sama tim.
+        </p>
+        <p>
+          Saat ini, saya juga aktif sebagai staf Sumber Daya Manusia (SDM) Sub-Bagian Pendidikan <strong>Biman Foundation</strong> yang sedang menjalankan program beasiswa bimbingan belajar untuk persiapan masuk Perguruan Tinggi Negeri (PTN). Saya memiliki semangat untuk terus belajar, mengembangkan keterampilan, dan berkontribusi melalui bidang teknologi maupun organisasi.
+        </p>
+      </article>
+
+      <!-- MULTIMEDIA -->
+      <section class="multimedia" id="multimedia">
+        <div class="box">
+          <h4>Vidio Kegiatan</h4>
+          <video controls poster="thumbnail.jpg">
+            <source src="vid.mp4" type="video/mp4">
+            Browser Anda tidak mendukung tag &lt;video&gt;.
+          </video>
+        </div>
+
+        <div class="box">
+          <h4>Dokumentasi Kegiatan</h4>
+          <div class="photo-grid">
+            <img src="sdm.jpg" alt="Foto 1">
+            <img src="kiabiman.jpg" alt="Foto 2">
+            <img src="oyis.jpg" alt="Foto 3">
+            <img src="ec.jpg" alt="Foto 4">
+          </div>
+        </div>
+
+        <div class="box" id="download">
+          <h4>📎 Attachments</h4>
+           <ul class="attachments">
+            <li><a href="files/cv.pdf" download>Download CV (PDF)</a></li>
+            <li><a href="files/sertifikat.pdf" download>Download Sertifikat (PDF)</a></li>
+            <li><a href="files/karya-tulis-ilmiah.pdf" download>Download Karya Tulis Ilmiah (PDF)</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 auladeena. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
