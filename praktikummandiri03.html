@@ -44,7 +44,7 @@
     /* Bagian Info Tengah */
     .info {
       flex: 1;
-      min-width: 0; /* KUNCI: Biar teks panjang nggak dorong layout */
+      min-width: 0; 
     }
     .info h1 {
       font-size: 2em;
@@ -56,7 +56,7 @@
     /* Grid Biodata */
     .info-grid {
       display: grid;
-      grid-template-columns: 110px 1fr; /* 110px buat label, sisa buat isi */
+      grid-template-columns: 110px 1fr; 
       gap: 8px 10px;
       margin-bottom: 20px;
       font-size: 0.95em;
@@ -88,7 +88,7 @@
     .contact-info a {
       color: #0066cc;
       text-decoration: none;
-      word-break: break-all; /* Biar email panjang turun rapi */
+      word-break: break-all; 
     }
     .contact-info a:hover { text-decoration: underline; }
 
@@ -134,7 +134,7 @@
       transition: color 0.2s;
     }
     nav a:hover { color: #ffeb3b; } 
-    /* ===== MAIN ARTICLE ===== */
+    /* MAIN ARTICLE  */
     main article p {
       text-align: justify;
       color: #444;
@@ -197,7 +197,7 @@
       font-size: 0.85em;
     }
 
-    /* ===== RESPONSIVE (MOBILE) ===== */
+    /*  RESPONSIVE (MOBILE) */
     @media (max-width: 800px) {
       header { flex-direction: column; }
       aside.categories {
@@ -216,13 +216,13 @@
 
     <!-- HEADER -->
     <header>
-      <!-- FOTO (Pastikan ada folder images dan file foto-diri.jpg) -->
+      <!-- FOTO -->
       <img src="potokia1.jpeg" alt="Foto Rizkia Auladina" class="foto">
 
       <div class="info">
         <h1>Rizkia Auladina</h1>
         
-        <!-- BIODATA (DIJAMIN SEJAJAR) -->
+        <!-- BIODATA -->
         <div class="info-grid">
           <div class="label">Program Studi</div>
           <div class="value">: Teknik Informatika</div>
